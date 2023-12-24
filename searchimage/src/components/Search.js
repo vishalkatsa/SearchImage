@@ -1,19 +1,19 @@
-import React, { useState , useContext} from "react";
+import React, { useState, useContext } from "react";
 import bikeb from "./image/bike-bajaj.jpeg";
-import bikeh from './image/bike-hero.jpeg';
-import bikehonda      from './image/bike-honda.jpeg';
-import bikeola      from './image/bike-ola.jpeg';
-import biketvs      from './image/bike-tvs.jpeg';
+import bikeh from "./image/bike-hero.jpeg";
+import bikehonda from "./image/bike-honda.jpeg";
+import bikeola from "./image/bike-ola.jpeg";
+import biketvs from "./image/bike-tvs.jpeg";
 import carbmw from "./image/car-bmw.jpeg";
 import partyapp from "./image/party-app.jpeg";
 import partybjp from "./image/party-bjp.jpeg";
-import micicon from './googlemic.png';
-import googlelens from './Google Lens.png'
+import micicon from "./googlemic.png";
+import googlelens from "./Google Lens.png";
 import { MyContext } from "./Context/Context";
 
 export default function Search(props) {
   const [searchiteam, setsearchiteam] = useState("");
-  const { setSearchedImage} = useContext(MyContext);
+  const { setSearchedImage } = useContext(MyContext);
   const { showImages } = useContext(MyContext);
 
   let Images = [
@@ -59,19 +59,17 @@ export default function Search(props) {
     },
   ];
   const searchclick = () => {
-    if (showImages === true && searchiteam !== '') {
-    const  filteredImages = Images.filter((value) => {
-      return value.title.toLowerCase().includes(searchiteam.toLowerCase());
+    if (showImages === true && searchiteam !== "") {
+      const filteredImages = Images.filter((value) => {
+        return value.title.toLowerCase().includes(searchiteam.toLowerCase());
+      });
 
-    });
-    
-      
-      setSearchedImage(filteredImages)
+      setSearchedImage(filteredImages);
     }
     // console.log(filteredImages);
   };
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       // Trigger search when Enter key is pressed
       searchclick();
     }
@@ -88,7 +86,6 @@ export default function Search(props) {
           value={searchiteam}
           onChange={(e) => setsearchiteam(e.target.value)}
           onKeyPress={handleKeyPress}
-
           className="w-[100%] h-11 px-4 outline-none rounded-tl rounded-bl"
         />
         <button className="w-4 h-5 mx-2">
